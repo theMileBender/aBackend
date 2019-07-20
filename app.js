@@ -18,3 +18,4 @@ app.listen(8080);
 console.log("App listening on 8080");
 
 app.use("/api/v1/", require('./routes/api/airquality'));
+app.use("/auth", require('./routes/auth-routes/auth-routes'));
