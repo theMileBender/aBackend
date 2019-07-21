@@ -1,10 +1,16 @@
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20');
+const GooglePlusTokenStrategy = require('passport-google-plus-token');
+const keys = require('./keys');
 
-passport.use(
-    new GoogleStrategy({
-        // options for the google 
-    }), () => {
-        
-    }
-)
+
+
+// Google Oauth strategy
+passport.use('googleToken', new GooglePlusTokenStrategy({
+    clientID: keys.google.clientID,
+    clientSecret:keys.google.clientSecret
+}, async (accessToken, refreshToken, profile, done) => {
+    console.log('accessToken:', accessToken );
+    console.log('refreshToken:',refreshToken );
+    console.log('profile:',profile );
+}));
+

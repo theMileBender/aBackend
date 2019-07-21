@@ -1,8 +1,13 @@
 // Import the express lirbary
 const express = require('express');
 
-// Inititalizing router
-const router = express.Router(); 
+const authRoutes = require('./routes/auth-routes/auth-routes');
+const airQuality = require('./routes/api/airquality');
+
+const passport = require('passport');
+
+// Passport Setup
+const passportSetup = require('./config/passport-setup'); 
 
 // Body parser
 const bodyParser = require('body-parser');
@@ -11,11 +16,17 @@ const bodyParser = require('body-parser');
 // the express static middleware, to serve all files
 // inside the public directory
 const app = express();
-app.use(express.static(__dirname + '/public'));
 
-// Start the server on port 8080
-app.listen(8080);
-console.log("App listening on 8080");
 
-app.use("/api/v1/", require('./routes/api/airquality'));
-app.use("/auth", require('./routes/auth-routes/auth-routes'));
+
+// Start the server on port 3000
+app.listen(3000);
+console.log("App listening on 3000");
+
+app.get("/home", function(res, res){
+    console.log("Testing");
+});
+
+app.use(bodyParser.json());
+app.use("/api/v1/", airQuality);
+app.use("/oauth", authRoutes);

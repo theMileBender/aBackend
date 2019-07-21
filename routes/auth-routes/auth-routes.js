@@ -1,11 +1,8 @@
 const router = require('express').Router();
+const passport = require('passport');
 
-// auth login
-router.get('/google', (req,res) => {
-
-    res.send('Logging with google');
-
-});
+router.route('/google')
+.post(passport.authenticate('googleToken', { session: false}));
 
 //auth logout
 router.get('/logout', (req, res) => {

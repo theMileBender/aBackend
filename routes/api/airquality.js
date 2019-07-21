@@ -2,8 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('calulate/airquality', (req, res)=> {
-
+router.get('calculate', (req, res)=> {
+ console.log("Hitting");
 });
 
 module.exports = router;

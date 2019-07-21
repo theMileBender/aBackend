@@ -20,3 +20,5 @@ webpack-cache
 hs_err_pid*
 node_modules
 /.settings/
+
+keys.js
