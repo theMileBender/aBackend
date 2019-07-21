@@ -1,6 +1,18 @@
 // Import the express lirbary
 const express = require('express');
 
+//Database
+const mongoose = require('mongoose');
+
+//Connect to mongodb
+mongoose.connect('mongodb://localhost/myapp');
+
+mongoose.connection.once('open', function(){
+    console.log("Connection has been made");
+}).on('error', function(error) {
+    console.log("Connection error");
+})
+
 const authRoutes = require('./routes/auth-routes/auth-routes');
 const airQuality = require('./routes/api/airquality');
 
