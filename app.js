@@ -4,6 +4,9 @@ const express = require('express');
 //Database
 const mongoose = require('mongoose');
 
+// Importing config
+const config = require('./config/config');
+
 //Connect to mongodb
 mongoose.connect('mongodb://localhost/myapp');
 
@@ -32,8 +35,8 @@ const app = express();
 
 
 // Start the server on port 3000
-app.listen(3000);
-console.log("App listening on 3000");
+app.listen(config.port);
+console.log("App listening on" + config.port);
 
 app.get("/home", function(res, res){
     console.log("Testing");
